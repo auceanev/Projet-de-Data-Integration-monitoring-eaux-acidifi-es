@@ -24,6 +24,12 @@ Voici les logiciels nécessaires pour exécuter le projet.
 - **Hadoop HDFS**
 - **PostgreSQL**
 
+## Structure du Projet
+- **kafka/** : Contient les scripts pour envoyer des données depuis Kafka.
+- **spark/** : Scripts de traitement des données en temps réel avec Spark Streaming.
+- **hdfs/** : Configuration et scripts pour le stockage dans HDFS.
+- **dashboard/** : Configuration de la visualisation avec Grafana.
+
 
 ### Étapes d'installation
 Les étapes pour installer votre projet localement.
@@ -34,9 +40,11 @@ Les étapes pour installer votre projet localement.
 git clone https://github.com/auceanev/Projet-de-Data-Integration-monitoring-eaux-acidifi-es.git
 
 cd Projet-de-Data-Integration-monitoring-eaux-acidifi-es
-
+```
 2. Installer les dépendances
-pip install -r requirements.txt
+
+`pip install -r requirements.txt`
+
 3. Lancer le producteur Kafka
 
 ## Instructions d'exécution
@@ -44,7 +52,7 @@ pip install -r requirements.txt
 2. Lancer le producteur Kafka :
    ```bash
    python kafka_producer.py
-
+```
 3. Lancer le consommateur Spark :
    ```bash
    spark-submit spark_consumer.py
@@ -53,6 +61,8 @@ pip install -r requirements.txt
  ```bash
 kafka-topics.sh --create --topic water-quality --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
 
+
+4. Visualiser les résultats sur Grafana.
 ## Introduction
 
 Ce projet vise à construire un pipeline d’intégration de données en temps réel en utilisant Kafka pour le streaming, Spark pour le traitement des données, et HDFS pour le stockage. Les jeux de données suivants sont utilisés :
@@ -78,3 +88,5 @@ Relations principales définies :
 site_id et method_id comme colonnes de jointure potentielles.
 
 
+## Auteurs
+- Votre Nom
