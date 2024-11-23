@@ -16,7 +16,7 @@ Ce projet implémente un pipeline de traitement de données en temps réel utili
 ### Prérequis
 Voici les logiciels nécessaires pour exécuter le projet.
 
-- **Python 3.x**
+- **Python 3.**
 - **Apache Kafka**
 - **Apache Spark**
 - **Hadoop HDFS**
@@ -39,26 +39,9 @@ cd Projet-de-Data-Integration-monitoring-eaux-acidifi-es
 ```
 2. Installer les dépendances
 
-`pip install -r requirements.txt`
-
-3. Lancer le producteur Kafka
-
-## Instructions d'exécution
-1. Démarrer Kafka et HDFS.
-2. Lancer le producteur Kafka :
-   ```bash
-   python kafka_producer.py
-```
-3. Lancer le consommateur Spark :
-   ```bash
-   spark-submit spark_consumer.py
-```
-
-4. Utilisez la commande suivante pour créer le topic Kafka `water-quality` :
- ```bash
-kafka-topics.sh --create --topic water-quality --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
-```
-
+`
+pip install -r requirements.txt
+`
 
 # Objectifs:
 1. Intégrer les données en provenance de fichiers et du streaming Kafka.
