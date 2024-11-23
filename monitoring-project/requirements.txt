@@ -1,0 +1,7 @@
+Dépendances Python
+
+Les principales dépendances Python utilisées dans ce projet sont :
+
+kafka-python : Pour interagir avec Kafka (Producer et Consumer).
+pandas : Pour manipuler et transformer les données avant de les envoyer vers Kafka.
+pyspark : Pour traiter les données en temps réel via Spark Streaming.
