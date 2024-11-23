@@ -5,10 +5,9 @@ Ce projet vise à surveiller les niveaux chimiques dans les eaux acidifiées en 
 ## Table des matières
 1. [Description du projet](#description-du-projet)
 2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Technologies utilisées](#technologies-utilisées)
+3. [Objectifs](#objectifs)
 
-## Description Générale
+## Description du projet
 Ce projet implémente un pipeline de traitement de données en temps réel utilisant Kafka et Spark. L'objectif est de consommer des données issues d'un fichier Excel, de les publier sur un topic Kafka, puis de les traiter en temps réel avec Spark Streaming. Les données sont ensuite intégrées et préparées pour des analyses futures.
 
 ## Installation
@@ -16,7 +15,7 @@ Ce projet implémente un pipeline de traitement de données en temps réel utili
 ### Prérequis
 Voici les logiciels nécessaires pour exécuter le projet.
 
-- **Python 3.**
+- **Python 3**
 - **Apache Kafka**
 - **Apache Spark**
 - **Hadoop HDFS**
@@ -35,13 +34,13 @@ Les étapes pour installer votre projet localement.
 ```bash
 git clone https://github.com/auceanev/Projet-de-Data-Integration-monitoring-eaux-acidifi-es.git
 
-cd Projet-de-Data-Integration-monitoring-eaux-acidifi-es
+cd Projet-de-Data-Integration-monitoring-eaux-acidifi-es/monitoring-project
 ```
 2. Installer les dépendances
 
-`
+```
 pip install -r requirements.txt
-`
+```
 
 # Objectifs:
 1. Intégrer les données en provenance de fichiers et du streaming Kafka.
