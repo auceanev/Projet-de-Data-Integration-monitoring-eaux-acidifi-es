@@ -136,27 +136,29 @@ __Procédure de récupération :__
 
 
 Ce qu’on aurait aimé ajouter en plus:
-	*	Ajouter des exemples concrets pour configurer le cluster Kafka et exécuter le consommateur et le producteur.”
-	*	Inclure une section sur l’intégration de Spark avec PostgreSQL pour enregistrer les métriques calculées.
-	*	Fournir des commandes ou scripts pour effectuer des requêtes sur les données enrichies.
+*	Ajouter des exemples concrets pour configurer le cluster Kafka et exécuter le consommateur et le producteur.”
+*	Inclure une section sur l’intégration de Spark avec PostgreSQL pour enregistrer les métriques calculées.
+*	Fournir des commandes ou scripts pour effectuer des requêtes sur les données enrichies.
 
 
 Décisions Techniques
-Choix de la Base de Données
+* Choix de la Base de Données
 	*	PostgreSQL : Sélectionné car plus fiable , voire tenace et ses capacités OLAP.
 	*	HDFS : Utilisé pour le stockage des fichiers bruts.
-Technologies Utilisées
+
+* Technologies Utilisées
 	*	Apache Kafka : Streaming en temps réel.
 	*	Apache Spark : Traitement de données distribuées.
 	*	PostgreSQL : Stockage et requêtes analytiques.
 	*	HDFS : Stockage distribué.
- 
-Nos Points Restants
-	1.	Implémenter la lecture des fichiers depuis HDFS.
-	2.	Finaliser l’intégration des données avec gestion des versions.
-	3.	Ajouter la logique de gestion des incohérences dans le pipeline.
-	4.	Effectuer les jointures des jeux de données et enrichir les données.
-	5.	Étendre la documentation technique pour inclure des exemples pratiques et des guides étape par étape.
+
+Nos Points Restants :
+
+1.	Implémenter la lecture des fichiers depuis HDFS.
+2.	Finaliser l’intégration des données avec gestion des versions.
+3.	Ajouter la logique de gestion des incohérences dans le pipeline.
+4.	Effectuer les jointures des jeux de données et enrichir les données.
+5.	Étendre la documentation technique pour inclure des exemples pratiques et des guides étape par étape.
 
 
 
