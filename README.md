@@ -131,8 +131,8 @@ Schéma général du pipeline (Kafka Producer → Kafka Consumer → Spark Proce
 
 __Procédure de récupération :__
 	
-	*	Étapes pour identifier et retraiter un lot défectueux.
-	*	Commandes pour restaurer une version précédente des données.
+*	Étapes pour identifier et retraiter un lot défectueux.
+*	Commandes pour restaurer une version précédente des données.
 
 
 Ce qu’on aurait aimé ajouter en plus:
