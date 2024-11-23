@@ -17,13 +17,13 @@
 
 ### 1. Démarrage des Services
 
-1.1 Démarrez ZooKeeper
+* 1.1 Démarrez ZooKeeper
 
  ```
   /opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
 ```
 
-	1.2 Démarrez Kafka
+*	1.2 Démarrez Kafka
 
  ```
  /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
@@ -36,15 +36,17 @@ kafka-topics.sh --create --topic water-quality --bootstrap-server localhost:9092
 ```
 ### 3. Écriture et Consommation de Données
 
-	3.1 Écrire le script pour envoyer des données au topic Kafka
+*	3.1 Écrire le script pour envoyer des données au topic Kafka
+
 cf producer.py
 
-	2. Lancer le producer Kafka :
+*	3. Lancer le producer Kafka :
 ```
    python producer.py
 ```
 
 6. Écrire le script pour consommer les données du topic et les traiter avec Spark
+
 cf spark_streaming.py
 
 3. Lancer le consommateur Spark :
