@@ -23,11 +23,9 @@ Voici les logiciels nécessaires pour exécuter le projet.
 - **PostgreSQL**
 
 ## Structure du Projet
-- **kafka/** : Contient les scripts pour envoyer des données depuis Kafka.
-- **spark/** : Scripts de traitement des données en temps réel avec Spark Streaming.
-- **hdfs/** : Configuration et scripts pour le stockage dans HDFS.
-- **dashboard/** : Configuration de la visualisation avec Grafana.
-
+- **kafka** : Contient les scripts pour envoyer des données depuis Kafka.
+- **spark** : Scripts de traitement des données en temps réel avec Spark Streaming.
+- **hdfs** : Configuration et scripts pour le stockage dans HDFS.
 
 ### Étapes d'installation
 Les étapes pour installer votre projet localement.
@@ -61,8 +59,6 @@ cd Projet-de-Data-Integration-monitoring-eaux-acidifi-es
 kafka-topics.sh --create --topic water-quality --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
 ```
 
-4. Visualiser les résultats sur Grafana.
-
 
 # Objectifs:
 1. Intégrer les données en provenance de fichiers et du streaming Kafka.
@@ -72,12 +68,14 @@ kafka-topics.sh --create --topic water-quality --bootstrap-server localhost:9092
 
 ## Étape I : Compréhension des Données
 _Statut : FAIT_
+
 Exploration initiale des jeux de données via une inspection manuelle et des outils comme Pandas et Spark.
 Identification des colonnes clés :
 
 * LTM_Data_2022_8_1 : Informations temporelles et mesures.
 * Methods_2022_8_1 : Détails des méthodologies utilisées.
 * Site_Information_2022_8_1 : Métadonnées sur les sites.
+
 Relations principales définies :
 site_id et method_id comme colonnes de jointure potentielles.
 
@@ -98,57 +96,60 @@ _Simulation du streaming Kafka : FAIT_
 _Statut : PARTIELLEMENT FAIT_
 
 Consumer Kafka : FAIT
-◦ Développement d’un Consumer Kafka basé sur Spark Streaming.
-◦ Les données consommées sont converties en DataFrames Spark pour traitement ultérieur.
-• Intégration dans le système : NON FAIT
-◦ Intégrer chaque lot reçu dans un jeu de données principal.
-◦ Implémenter la gestion des versions en enregistrant chaque lot traité avec un ID unique dans une table ou un répertoire dédié.
-◦ Ajouter des métadonnées par lot (horodatage, numéro de version, taille) pour permettre des capacités de restauration en cas d’incohérence.
-• Gestion des incohérences : NON FAIT
-◦ Développer une procédure pour isoler les lots défectueux et retraiter le dernier lot traité avec succès.
+* Développement d’un Consumer Kafka basé sur Spark Streaming.
+* Les données consommées sont converties en DataFrames Spark pour traitement ultérieur.
+* Intégration dans le système : NON FAIT
+* Intégrer chaque lot reçu dans un jeu de données principal.
+* Implémenter la gestion des versions en enregistrant chaque lot traité avec un ID unique dans une table ou un répertoire dédié.
+* Ajouter des métadonnées par lot (horodatage, numéro de version, taille) pour permettre des capacités de restauration en cas d’incohérence.
+* Gestion des incohérences : NON FAIT
+* Développer une procédure pour isoler les lots défectueux et retraiter le dernier lot traité avec succès.
 
 ## Étapes IV : Jointure et Enrichissement des Données
 _Statut : NON FAIT_
 
-• Identifier les champs correspondants (site_id, method_id) pour effectuer les jointures nécessaires entre les trois jeux de données.
-• Définir les métriques à calculer, comme la moyenne des mesures par site ou par méthode, ou encore la distribution des données selon les catégories.
+* Identifier les champs correspondants (site_id, method_id) pour effectuer les jointures nécessaires entre les trois jeux de données.
+* Définir les métriques à calculer, comme la moyenne des mesures par site ou par méthode, ou encore la distribution des données selon les catégories.
 
 ## Étapes V : Architecture de Stockage
 
 Approche hybride que nous suggérons:
 
-◦ HDFS pour stocker les données brutes et archivées.
-◦ PostgreSQL comme base de données relationnelle pour stocker les métriques calculées et permettre des requêtes OLAP.
-• Gestion des versions implémentée via une table PostgreSQL dédiée.
+* HDFS pour stocker les données brutes et archivées.
+* PostgreSQL comme base de données relationnelle pour stocker les métriques calculées et permettre des requêtes OLAP.
+* Gestion des versions implémentée via une table PostgreSQL dédiée.
 
 ## Étapes VI : Documentation
 _Statut : PARTIELLEMENT FAIT_
+
 __Pipeline :__
 	
 Schéma général du pipeline (Kafka Producer → Kafka Consumer → Spark Processing → PostgreSQL).
-◦	Configuration de Kafka :
-	▪	Topics : water-quality.
-	▪	Brokers et paramètres du cluster Kafka.
+*	Configuration de Kafka :
+	*	Topics : water-quality.
+	*	Brokers et paramètres du cluster Kafka.
+
 __Procédure de récupération :__
-	◦	Étapes pour identifier et retraiter un lot défectueux.
-	◦	Commandes pour restaurer une version précédente des données.
+	
+	*	Étapes pour identifier et retraiter un lot défectueux.
+	*	Commandes pour restaurer une version précédente des données.
 
 
 Ce qu’on aurait aimé ajouter en plus:
-	•	Ajouter des exemples concrets pour configurer le cluster Kafka et exécuter le consommateur et le producteur.”
-	•	Inclure une section sur l’intégration de Spark avec PostgreSQL pour enregistrer les métriques calculées.
-	•	Fournir des commandes ou scripts pour effectuer des requêtes sur les données enrichies.
+	*	Ajouter des exemples concrets pour configurer le cluster Kafka et exécuter le consommateur et le producteur.”
+	*	Inclure une section sur l’intégration de Spark avec PostgreSQL pour enregistrer les métriques calculées.
+	*	Fournir des commandes ou scripts pour effectuer des requêtes sur les données enrichies.
 
 
 Décisions Techniques
 Choix de la Base de Données
-	•	PostgreSQL : Sélectionné car plus fiable , voire tenace et ses capacités OLAP.
-	•	HDFS : Utilisé pour le stockage des fichiers bruts.
+	*	PostgreSQL : Sélectionné car plus fiable , voire tenace et ses capacités OLAP.
+	*	HDFS : Utilisé pour le stockage des fichiers bruts.
 Technologies Utilisées
-	•	Apache Kafka : Streaming en temps réel.
-	•	Apache Spark : Traitement de données distribuées.
-	•	PostgreSQL : Stockage et requêtes analytiques.
-	•	HDFS : Stockage distribué.
+	*	Apache Kafka : Streaming en temps réel.
+	*	Apache Spark : Traitement de données distribuées.
+	*	PostgreSQL : Stockage et requêtes analytiques.
+	*	HDFS : Stockage distribué.
  
 Nos Points Restants
 	1.	Implémenter la lecture des fichiers depuis HDFS.
